@@ -13,8 +13,8 @@ class Today extends Component {
     humidity: 0,
   }
 
-  componentDidMount() {
-    const apiurl="http://api.openweathermap.org/data/2.5/weather?q="+this.props.cityname+"&APPID=f981b5331f921feabfdb4bd00d04da04";
+  /*componentDidMount() {
+    const apiurl="https://api.openweathermap.org/data/2.5/weather?q="+this.props.cityname+"&APPID=f981b5331f921feabfdb4bd00d04da04";
     fetch(apiurl)
       .then(res => res.json())
       .then(
@@ -36,9 +36,51 @@ class Today extends Component {
             maxtemp: 0,
             humidity: 0,
             condition: "Failed to get weather data"});
+            console.log("The city was not found!!!!!!!!!!!!!!!!!!")
+        }
+      )
+  }*/
+
+  componentDidMount() {
+    const apiurl="https://api.openweathermap.org/data/2.5/weather?q="+this.props.cityname+"&APPID=f981b5331f921feabfdb4bd00d04da04";
+    fetch(apiurl)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+
+          if(result.cod == '200'){
+            console.log("The code is 200" + result.main.temp)
+            this.setState({
+              temp:result.main.temp,
+              mintemp: result.main.temp_min,
+              maxtemp: result.main.temp_max,
+              humidity: result.main.humidity,
+              condition: result.weather[0].description})
+              console.log(this.state.temp);
+          }
+          else{
+            console.log("The code is " + result.cod)
+            this.setState({
+              temp:255.372,
+              mintemp: 255.372,
+              maxtemp: 255.372,
+              humidity: 0,
+              condition: "City Not Found!!!"})
+          }
+        },
+        (error) => {
+          this.setState({
+            temp:0,
+            mintemp: 0,
+            maxtemp: 0,
+            humidity: 0,
+            condition: "Failed to get weather data"});
+            console.log("The city was not found!!!!!!!!!!!!!!!!!!")
         }
       )
   }
+
 
   render(){
     //convert the temps to F from Kelvin

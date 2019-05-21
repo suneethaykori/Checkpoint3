@@ -12,7 +12,7 @@ class Day5 extends Component {
 
 
   componentDidMount() {
-    const apiurl="http://api.openweathermap.org/data/2.5/forecast?q="+this.props.cityname+"&APPID=f981b5331f921feabfdb4bd00d04da04";
+    const apiurl="https://api.openweathermap.org/data/2.5/forecast?q="+this.props.cityname+"&APPID=f981b5331f921feabfdb4bd00d04da04";
 
     fetch(apiurl)
       .then(res => res.json())
