@@ -22,7 +22,10 @@ class App extends Component {
   handleClick(forecastDay){
     //if input is empty, then do nothing
     if(this.state.tempCity === '')
+    {
+      alert("Please enter the city name");
       return
+    }
 
     this.setState({
       forecast:forecastDay,
@@ -45,7 +48,7 @@ class App extends Component {
     else
       selection = <Day16/>
     return (
-      <div>
+      <div className="App">
         <input value={this.state.tempCity} onChange={(e) => this.handleInput(e)} placeholder="Enter City"/>
         {/* <DropdownList
           data={cities}
