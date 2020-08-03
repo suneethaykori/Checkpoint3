@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import DropdownList from 'react-widgets/lib/DropdownList';
 //import { DropdownList } from 'react-widgets';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Today from './today.js';
 import Day5 from './day5.js';
@@ -56,8 +56,8 @@ class App extends Component {
           onChange={city => this.setState({ city })}
         /> */}
 
-        <button onClick = {() =>this.handleClick('today') }>Weather Today</button>
-        <button onClick = {() => this.handleClick('5day')}>5-Day forecast </button>
+        <button className="butclass" onClick = {() =>this.handleClick('today') }>Weather Today</button>
+        <button className="butclass" onClick = {() => this.handleClick('5day')}>5-Day forecast </button>
         {selection}
       </div>
     );

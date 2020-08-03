@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class Day5 extends Component {
-  constructor(props){
-    super(props)
-  }
 
   state = {
     //Initialize with 5 blank entries
@@ -64,7 +61,7 @@ class Day5 extends Component {
           </tr>
           {this.state.weather.map((item,index)=> {
             return(
-              <tr>
+              <tr key={index}>
                 <td>{item.date}</td>
                 <td>{item.condition}</td>
                 <td>{item.temp} F</td>
